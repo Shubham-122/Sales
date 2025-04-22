@@ -1,0 +1,60 @@
+✅ Step-by-Step: The EASIEST and FASTEST Way to Export the Power BI Model View
+Since SSMS + DMV queries are being super annoying with syntax/connection issues, let's switch to DAX Studio — it's built specifically for this purpose and works like a charm.
+
+You’ve already opened DAX Studio before, so just follow this:
+
+🛠️ How to Export Power BI Model Relationships (Correct Way):
+🔁 1. Open DAX Studio
+Launch your Power BI report.
+
+Open DAX Studio.
+
+At the top, in the "Connect" screen, choose:
+
+Data Source: Power BI / PBI/SSDT Model
+
+Hit Connect
+
+2. ✅ Correct Approach in DAX Studio (DMV pane):
+You must use DMV-compatible syntax, which is just:
+
+sql
+Copy
+Edit
+SELECT * FROM $SYSTEM.TMSCHEMA_RELATIONSHIPS
+That’s it — no EVALUATE, no SELECTCOLUMNS.
+
+🧠 Want to Join and Get Clean Relationship Details?
+If you want to get friendly table/column names like:
+
+FromTableName
+
+FromColumnName
+
+ToTableName
+
+ToColumnName
+
+You need to export the following DMV results as separate CSVs:
+
+SELECT * FROM $SYSTEM.TMSCHEMA_RELATIONSHIPS
+
+SELECT * FROM $SYSTEM.TMSCHEMA_TABLES
+
+SELECT * FROM $SYSTEM.TMSCHEMA_COLUMNS
+
+
+
+
+
+
+
+
+
+💾 3. Export the Results
+After it runs:
+
+Go to the Results grid below.
+
+Click on “File” → “Save Results” → Save it as relationships.csv.
+
